@@ -18,6 +18,7 @@ app.use(session({
 
 const users = new Map();
 const challenges = new Map();
+const mfaChallenges = new Map();
 
 const id = () => crypto.randomUUID();
 const otp = () => String(Math.floor(100000 + Math.random() * 900000));
@@ -85,11 +86,31 @@ app.post("/api/verify-sms-otp", (req,res) => {
   const user = users.get(result.challenge.userId); user.mobileVerified = true;
   res.json({verified:true});
 });
-app.post("/api/enable-mfa", (req,res) => {
+app.post("/api/setup-mfa", (req,res) => {
   const user = users.get(req.body.email?.toLowerCase());
+  const method = req.body.method;
   if (!user || !user.emailVerified || !user.mobileVerified) return res.status(400).json({error:"Complete email and mobile verification first."});
+  if (!["authenticator","sms","email"].includes(method)) return res.status(400).json({error:"Choose a valid MFA method."});
+  const challengeId = id();
+  const code = otp();
+  mfaChallenges.set(challengeId,{userId:user.id,method,otpHash:hashOtp(code),expiresAt:Date.now()+3*60*1000,attempts:0,used:false});
+  console.log(`\n[SIMULATED MFA - ${method.toUpperCase()}]\nUser: ${user.id}\nOTP: ${code}\n`);
+  res.json({challengeId,method,setupKey:method === "authenticator" ? "SECUREID-DEMO-KEY" : undefined});
+});
+app.post("/api/verify-mfa", (req,res) => {
+  const c = mfaChallenges.get(req.body.challengeId);
+  if (!c || c.used) return res.status(400).json({error:"Invalid MFA challenge."});
+  if (Date.now() > c.expiresAt) return res.status(410).json({error:"This code has expired."});
+  if (c.attempts >= 3) return res.status(429).json({error:"Maximum attempts reached."});
+  if (hashOtp(String(req.body.otp)) !== c.otpHash) {
+    c.attempts++;
+    return res.status(c.attempts >= 3 ? 429 : 400).json({error:c.attempts >= 3 ? "Maximum attempts reached." : "Invalid code. Please try again.", attemptsLeft:Math.max(0,3-c.attempts)});
+  }
+  c.used = true;
+  const user = users.get(c.userId);
   user.mfaEnabled = true;
-  res.json({success:true});
+  user.mfaMethod = c.method;
+  res.json({success:true,mfaEnabled:true});
 });
 
 app.use(express.static(path.join(__dirname,"public")));

@@ -1,20 +1,21 @@
 # SecureID — Part 1 Registration Journey
 
-## Run locally
-1. Install Node.js 18+
-2. Run `npm install`
-3. Run `npm start`
-4. Open http://localhost:3000
+Implemented against the supplied Registration Screens and Implementation Guidelines.
 
-## OTP testing
-Email and SMS OTPs are generated only on the backend and printed to the server terminal.
-Enter those six-digit values in the browser.
+Included:
+- Registration form with backend validation and bcrypt password hashing
+- Email OTP: backend generation, protected hash storage, expiry, attempts, single-use, resend
+- SMS OTP: backend generation, protected hash storage, expiry, attempts, single-use, resend
+- MFA setup and backend verification (simulated delivery logged to server console)
+- Registration success state
+- Responsive web/mobile presentation
 
-For the demo authenticator screen, use: `624111`.
+## Run
+```bash
+npm install
+npm start
+```
+Open http://localhost:3000.
 
-## Implemented
-Registration form, email OTP, wrong/expired states, SMS OTP, wrong/max-attempt states,
-MFA selection, authenticator setup/verification, success screen, responsive mobile/web UI.
-
-## Deployment
-Push this folder to GitHub and import the repository into Vercel.
+## Important assignment note
+The later "Password Enhancement" (Weak / Medium / Strong strength indicator and minimum-strength frontend blocking) is intentionally NOT pre-implemented here. The assignment explicitly instructs the candidate to proceed only after Internshala admin confirmation and to implement that change by LIVE CODING without AI in the submission video. The baseline show/hide password control remains present because it is already shown in the supplied registration reference screen.
