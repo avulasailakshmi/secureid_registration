@@ -1,0 +1,145 @@
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111827;background:#f7f8fb;font-size:14px}
+.shell{min-height:100vh}.main{min-height:100vh;width:100%;padding:24px 28px;display:flex;flex-direction:column;align-items:center}
+.topbar{width:100%;display:flex;align-items:center;gap:28px;margin-bottom:12px}.brand{font-weight:800;font-size:16px}.brand span{color:#2848ee}.screen-title{font-size:13px;font-weight:700}
+.stepper{width:min(700px,74vw);display:flex;align-items:center;margin:6px auto 22px}.step{width:24px;height:24px;border:1px solid #cbd5e1;border-radius:50%;display:grid;place-items:center;background:#fff;font-size:11px}.step.active{background:#143ee8;color:#fff;border-color:#143ee8}.stepper i{height:1px;background:#d9e0ea;flex:1}
+.card{width:min(1180px,96vw);background:#fff;border:1px solid #e6e9ef;border-radius:9px;box-shadow:0 3px 12px #1118270b;padding:26px 34px;min-height:590px}
+h1{font-size:25px;margin:0 0 6px}h2{font-size:22px;margin:8px 0}p.sub{color:#667085;margin:0 0 25px}.otp-wrap h2,.otp-wrap p.sub{text-align:center}
+.form-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:32px}.field{margin-bottom:14px}label{display:block;font-size:12px;font-weight:700;margin-bottom:6px}
+input,select{width:100%;height:40px;border:1px solid #d0d5dd;border-radius:5px;padding:0 11px;outline:none;background:#fff}.phone{display:grid;grid-template-columns:82px 1fr;gap:8px}
+.password{position:relative}.password button{position:absolute;right:8px;top:8px;border:0;background:none;cursor:pointer}.requirements{border:1px solid #e5e7eb;border-radius:8px;padding:16px;margin-top:21px}.requirements b{font-size:12px}.requirements div{margin-top:12px;font-size:12px}.ok{color:#159447}
+.terms{display:flex;gap:8px;font-size:11px;line-height:1.5;margin:10px 0}.terms input{width:14px;height:14px;margin-top:2px}.btn{width:100%;height:42px;border:0;border-radius:5px;background:#123fe8;color:white;font-weight:700;cursor:pointer}.btn.secondary{background:white;color:#111827;border:1px solid #d0d5dd}.login-link{text-align:center;margin-top:14px;font-size:12px}.link{color:#123fe8;font-weight:700;cursor:pointer}
+.icon{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;margin:4px auto 20px;font-size:30px;background:#e8edff;color:#143ee8}.icon.green{background:#e3f8ec;color:#16a34a}.icon.red{background:#fee8e8;color:#ef4444}
+.otp-wrap{max-width:560px;margin:18px auto;text-align:center}.otp{display:flex;gap:13px;justify-content:center;margin:30px 0}.otp input{width:48px;height:48px;text-align:center;font-size:18px;font-weight:700}.timer{margin:20px 0}.error{background:#feeaea;color:#e11d48;padding:10px;border-radius:5px;font-size:12px;margin:14px 0}.success-list{max-width:270px;margin:22px auto;text-align:left}.success-list div{margin:12px 0;color:#475467}
+.mfa-list{max-width:650px;margin:18px auto}.mfa-option{display:flex;align-items:center;gap:12px;border:1px solid #d0d5dd;border-radius:6px;padding:12px;margin:9px 0}.mfa-option.selected{border-color:#4566f2;background:#f8faff}.mfa-option input{width:16px;height:16px;margin-left:auto}.qr{width:170px;height:170px;object-fit:contain;margin:20px auto;display:block}
+footer{margin-top:auto;padding-top:18px;color:#98a2b3;font-size:11px}
+@media(max-width:760px){body{background:#fff}.main{padding:18px 28px}.topbar{height:44px;margin:0}.topbar .brand,.screen-title{display:none}.topbar:before{content:"←";font-size:24px}.stepper{display:none}.card{border:0;box-shadow:none;padding:0;min-height:0;width:100%}h1,h2{font-size:17px;text-align:center}h1+p.sub,p.sub{text-align:center;font-size:12px}.form-grid{display:block}.requirements{border:0;padding:0;margin-top:6px}.otp-wrap{margin:0 auto}.otp input{width:38px;height:44px}.otp{gap:8px}.mfa-list{margin-top:10px}.main footer{display:none}}/* Part 2 — Login screens based on supplied Login Screens.png */
+.login-mode{background:#f5f7fb}.login-mode .main{padding:28px}.login-mode .topbar{display:none}.login-mode .card{padding:0;min-height:620px;max-width:920px;overflow:hidden}.login-mode footer{display:none}
+.login-layout{min-height:620px;display:grid;grid-template-columns:230px 1fr}.login-brand{background:linear-gradient(155deg,#5598f5,#3545df);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}.login-brand:after{content:"";position:absolute;width:340px;height:120px;background:#ffffff10;transform:rotate(-35deg);bottom:35px;left:-90px}.shield{font-size:46px}.login-brand h2{font-size:24px;margin:12px 0 14px}.login-brand p{line-height:1.8;color:#eef2ff}
+.login-panel{width:100%;max-width:500px;margin:auto;padding:52px 54px;text-align:center}.login-panel h2{font-size:24px}.login-icon{width:62px;height:62px;margin:0 auto 18px;border-radius:50%;background:#eef1ff;color:#3d49ec;display:grid;place-items:center;font-size:28px}.login-icon.bad{background:#ffeaea;color:#ef4444}.input-icon{position:relative}.input-icon>input{padding-left:38px}.input-icon:first-letter{color:#667085}.input-icon{color:#667085}.input-icon>button{position:absolute;right:8px;top:7px;border:0;background:transparent;cursor:pointer}.input-icon:before{position:absolute;left:13px;top:12px}.login-row{display:flex;justify-content:space-between;align-items:center;margin:12px 0 18px;font-size:11px}.remember{display:flex;align-items:center;gap:7px;margin:0;font-weight:400}.remember input{width:14px;height:14px}.login-error,.otp-error{color:#ef1f2d;font-size:11px;margin:7px 0 12px}.or{display:flex;align-items:center;gap:12px;color:#667085;font-size:11px;margin:18px 0}.or:before,.or:after{content:"";height:1px;background:#e5e7eb;flex:1}.google-btn{height:42px;width:100%;border:1px solid #d0d5dd;background:#fff;border-radius:5px;font-weight:700;cursor:pointer}.new-user{font-size:11px;margin-top:28px}.method-list{text-align:left;margin:26px 0}.method{display:flex;align-items:center;gap:12px;border:1px solid #d5dae3;border-radius:7px;padding:12px;margin:10px 0;cursor:pointer}.method:has(input:checked){border-color:#3f55ef;background:#f8f9ff}.method span:nth-child(2){flex:1}.method b{display:block;font-size:12px}.method small{display:block;color:#667085;margin-top:3px;font-weight:400}.method input{width:16px;height:16px}.method-symbol{width:32px;height:32px;border-radius:50%;display:grid;place-items:center}.method-symbol.email{background:#e9edff;color:#304be8}.method-symbol.sms{background:#e8f8ec;color:#16a34a}.method-symbol.auth{background:#eef0f3;color:#667085}.otp-login .otp{margin:30px -20px 26px}.otp-login .otp input{width:45px}.help-link{color:#163be0;font-size:11px;margin-top:42px}.dashboard{max-width:480px;margin:70px auto;text-align:center}.dash-icon{width:70px;height:70px;margin:auto;border-radius:50%;background:#e5f8ec;color:#16a34a;display:grid;place-items:center;font-size:32px}.profile-card{display:flex;flex-direction:column;gap:7px;padding:18px;border:1px solid #e5e7eb;border-radius:8px;margin:25px 0;text-align:left}.profile-card span{color:#667085}.dashboard .btn{margin-top:10px}.jwt-result{min-height:20px;color:#159447;margin:8px 0}
+@media(max-width:760px){.login-mode .main{padding:0}.login-mode .card{width:100%;min-height:100vh}.login-layout{display:block;min-height:100vh}.login-brand{display:none}.login-panel{padding:72px 28px 30px;max-width:440px}.login-panel h2{font-size:18px}.login-icon{width:58px;height:58px}.otp-login .otp{margin:28px 0}.otp-login .otp input{width:38px}.dashboard{margin:70px 28px}.login-mode .topbar{display:none!important}}
+
+/* Consistent password visibility control */
+.password input,.input-icon>input#loginPw{padding-right:46px}
+.password .visibility-toggle,.input-icon>.visibility-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;padding:0;border:0;background:transparent;display:grid;place-items:center;cursor:pointer}
+.visibility-circle{position:relative;display:block;width:16px;height:16px;border:2px solid #667085;border-radius:50%;box-sizing:border-box}
+.visibility-circle::after{content:"";position:absolute;width:5px;height:5px;border-radius:50%;background:#667085;left:50%;top:50%;transform:translate(-50%,-50%)}
+.visibility-toggle.shown .visibility-circle::after{display:none}
+.google-btn{display:flex;align-items:center;justify-content:center;gap:10px}
+.google-icon{width:18px;height:18px;display:block;flex:0 0 18px}
+
+/* Password visibility alignment fix */
+.password .visibility-toggle,
+.input-icon > .visibility-toggle{
+  position:absolute;
+  right:12px;
+  top:20px;
+  transform:translateY(-50%);
+  width:24px;
+  height:24px;
+  padding:0;
+  margin:0;
+  border:0;
+  outline:none;
+  background:transparent;
+  appearance:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  cursor:pointer;
+}
+.password .visibility-circle,
+.input-icon .visibility-circle{
+  position:relative;
+  display:block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  border:2px solid #667085;
+  border-radius:50%;
+  box-sizing:border-box;
+}
+.password .visibility-circle::after,
+.input-icon .visibility-circle::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:4px;
+  height:4px;
+  margin-left:-2px;
+  margin-top:-2px;
+  border:0;
+  border-radius:50%;
+  background:#667085;
+}
+.visibility-toggle.shown .visibility-circle::after{display:none}
+
+/* Final password toggle positioning */
+.password,
+.login-panel .input-icon{
+  position:relative;
+  height:40px;
+}
+.password input,
+.login-panel .input-icon > input#loginPw{
+  height:40px;
+  padding-right:48px;
+}
+.password .visibility-toggle,
+.login-panel .input-icon > .visibility-toggle{
+  position:absolute !important;
+  right:10px !important;
+  top:6px !important;
+  transform:none !important;
+  width:28px !important;
+  height:28px !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  display:grid !important;
+  place-items:center !important;
+  cursor:pointer;
+}
+.password .visibility-circle,
+.login-panel .input-icon .visibility-circle{
+  display:block;
+  position:relative;
+  width:16px;
+  height:16px;
+  border:2px solid #667085;
+  border-radius:50%;
+  box-sizing:border-box;
+  background:radial-gradient(circle at 50% 50%, #667085 0 2px, transparent 2.5px);
+}
+.password .visibility-circle::after,
+.login-panel .input-icon .visibility-circle::after{
+  content:none !important;
+  display:none !important;
+}
+.visibility-toggle.shown .visibility-circle{
+  background:transparent !important;
+}
+
+/* Stable login input layout: keep icons/toggle inside 40px fields */
+.login-panel .field{margin-bottom:14px}
+.login-panel .input-icon{position:relative;height:40px;line-height:normal}
+.login-panel .input-icon>.field-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;display:grid;place-items:center;color:#667085;font-size:12px;line-height:1;z-index:2;pointer-events:none}
+.login-panel .input-icon>input{display:block;width:100%;height:40px;margin:0;padding:0 48px 0 38px}
+.login-panel .input-icon>.visibility-toggle{position:absolute!important;right:10px!important;top:50%!important;transform:translateY(-50%)!important;width:28px!important;height:28px!important;margin:0!important;padding:0!important;display:grid!important;place-items:center!important;z-index:3}
+.login-panel .login-row{clear:both;margin:14px 0 18px}
+.password{position:relative;height:40px}
+.password>input{display:block;height:40px;margin:0;padding-right:48px}
+.password>.visibility-toggle{position:absolute!important;right:10px!important;top:50%!important;transform:translateY(-50%)!important;width:28px!important;height:28px!important;display:grid!important;place-items:center!important}
+.visibility-circle{width:16px!important;height:16px!important;border:2px solid #667085!important;border-radius:50%!important;box-sizing:border-box!important;background:radial-gradient(circle at center,#667085 0 2px,transparent 2.5px)!important}
+.visibility-toggle.shown .visibility-circle{background:transparent!important}
+
+
+/* Registration password-strength indicator */
+.password-strength{display:flex;align-items:center;gap:8px;margin-top:7px;font-size:12px;font-weight:600}
+.password-strength .strength-bar{display:block;width:72px;height:5px;border-radius:999px;background:#d0d5dd;overflow:hidden}
+.password-strength .strength-bar::after{content:"";display:block;height:100%;border-radius:999px;background:currentColor}
+.password-strength.weak{color:#d92d20}.password-strength.weak .strength-bar::after{width:33%}
+.password-strength.medium{color:#b54708}.password-strength.medium .strength-bar::after{width:66%}
+.password-strength.strong{color:#067647}.password-strength.strong .strength-bar::after{width:100%}
